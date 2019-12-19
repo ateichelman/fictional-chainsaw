@@ -7,6 +7,7 @@ package at.com;
 
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 /**
  *
@@ -41,10 +42,14 @@ public class FormWrapper {
         // Get list of users from keycloak
         String htmlString = actionResponse.toString();
         
-        // TODO: Make sure the second value in the object should be the html string.
+        // TODO: Make sure the second value in the object is the html string.
         Document doc = Jsoup.parse(htmlString);
         
+        // https://jsoup.org/cookbook/extracting-data/selector-syntax
+        // find elements with "Assignee" in the name (assignees are users)
+        Elements userField = doc.select("textarea[name*='Assignee']");
         
+        // TODO: Okay, now change these textAreas into dropdowns and add the user lists!
         
     }
     
